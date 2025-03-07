@@ -21,12 +21,6 @@ def key2val_dropdown(chosen):
                     'Crude Oil (CL=F)',
                     'Natural Gas (NG=F)',
                     'Gasoline (RB=F)',
-                    # 'EUR/USD (EURUSD=X)',
-                    # 'GBP/USD (GBPUSD=X)',
-                    # 'USD/JPY (JPY=X)',
-                    # 'EUR/GBP (EURGBP=X)',
-                    # 'EUR/JPY (EURJPY=X)',
-                    # 'GBP/JPY (GBPJPY=X)',
                     'Bitcoin (BTC-USD)',
                     'Ethereum (ETH-USD)',
                     'Ripple (XRP-USD)',
@@ -41,12 +35,6 @@ def key2val_dropdown(chosen):
                 'CL=F',
                 'NG=F',
                 'RB=F',
-                # 'EURUSD=X',
-                # 'GBPUSD=X',
-                # 'JPY=X',
-                # 'EURGBP=X',
-                # 'EURJPY=X',
-                # 'GBPJPY=X',
                 'BTC-USD',
                 'ETH-USD',
                 'XRP-USD',
@@ -67,12 +55,6 @@ with gr.Blocks() as demo:
                     'Crude Oil (CL=F)',
                     'Natural Gas (NG=F)',
                     'Gasoline (RB=F)',
-                    # 'EUR/USD (EURUSD=X)',
-                    # 'GBP/USD (GBPUSD=X)',
-                    # 'USD/JPY (JPY=X)',
-                    # 'EUR/GBP (EURGBP=X)',
-                    # 'EUR/JPY (EURJPY=X)',
-                    # 'GBP/JPY (GBPJPY=X)',
                     'Bitcoin (BTC-USD)',
                     'Ethereum (ETH-USD)',
                     'Ripple (XRP-USD)',
@@ -102,4 +84,4 @@ with gr.Blocks() as demo:
     # symbol_choice.change(fn=key2val_dropdown, inputs=symbol_choice, outputs=symbol_choice)
     submit_button.click(fn=grafik_lilin, inputs=symbol_choice, outputs=plot_result)
 
-demo.launch(share=False)
+demo.launch(share=True)

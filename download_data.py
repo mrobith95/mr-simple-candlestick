@@ -2,12 +2,8 @@ import yfinance as yf
 import pandas as pd
 from append_or_create_csv import append_or_create_csv
 import os
-import ntplib
 import pytz
 from datetime import datetime
-import time
-import requests
-# from str2datetime import str2datetime
 
 def download_data(to_download):
 

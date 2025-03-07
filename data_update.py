@@ -1,12 +1,9 @@
-import ntplib
 from datetime import datetime, timedelta
 import pytz
 import os
 import csv
 from download_data import download_data
 from str2datetime import *
-import time
-import requests
 
 def data_update(stock):
 
