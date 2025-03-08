@@ -74,14 +74,14 @@ with gr.Blocks() as demo:
         ## How it works
         1. Choose 1 of available tickers.
         2. Click Submit
-        3. Wait for the chart to appear. 
+        3. Wait for the chart to appear (especially the first chart). 
         4. Move cursor to the candle to see detailed info about OHLC and price direction.
         
-        Data is taken from yahoo finance.
+        Data is taken from yahoo finance. Note that the displayed data might be delayed.
         """
     )
 
     # symbol_choice.change(fn=key2val_dropdown, inputs=symbol_choice, outputs=symbol_choice)
     submit_button.click(fn=grafik_lilin, inputs=symbol_choice, outputs=plot_result)
 
-demo.launch(share=True)
+demo.launch()
