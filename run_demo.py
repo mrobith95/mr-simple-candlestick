@@ -2,11 +2,18 @@ import gradio as gr
 from make_plot import make_plot
 from data_update import data_update
 
-def grafik_lilin(display_name):
+def grafik_lilin(display_name, sma_val):
+    ## check validity of inputs
+    if display_name is None or display_name == '---':
+        raise gr.Error('Unrecognized input. Only choose 1 option on the dropdown.', duration=5)
+
+    if float(int(sma_val)) != sma_val:
+        gr.Info('Float input detected. This value would be converted as int.', duration=5)
+
     # Convert display name to ticker symbol first
     stock = key2val_dropdown(display_name)
     data_update(stock)
-    return make_plot(stock)
+    return make_plot(stock, sma_val)
 
 ## define function to map keys to values
 def key2val_dropdown(chosen):
@@ -66,7 +73,10 @@ with gr.Blocks() as demo:
         Simple app to visualize (some) financial data
         """
     )
-    symbol_choice = gr.Dropdown(isi_dropdown, label='Available Ticker')
+    with gr.Row():
+        symbol_choice = gr.Dropdown(isi_dropdown, label='Available Tickers', info="Choose 1 from the following list.")
+        sma_input = gr.Number(label="SMA Period", info="Enter value between 2 and 20 to use SMA. No SMA otherwise.")
+
     submit_button = gr.Button("Submit", variant='primary')
     plot_result = gr.Plot(label='candlestick-chart', format='png')
     gr.Markdown(
@@ -81,7 +91,9 @@ with gr.Blocks() as demo:
         """
     )
 
-    # symbol_choice.change(fn=key2val_dropdown, inputs=symbol_choice, outputs=symbol_choice)
-    submit_button.click(fn=grafik_lilin, inputs=symbol_choice, outputs=plot_result)
+    # # display chart only after submit button is clicked
+    submit_button.click(fn=grafik_lilin,
+                        inputs=[symbol_choice, sma_input],
+                        outputs=plot_result)
 
 demo.launch()
