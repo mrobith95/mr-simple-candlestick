@@ -75,7 +75,8 @@ with gr.Blocks() as demo:
     )
     with gr.Row():
         symbol_choice = gr.Dropdown(isi_dropdown, label='Available Tickers', info="Choose 1 from the following list.")
-        sma_input = gr.Number(label="SMA Period", info="Enter value between 2 and 20 to use SMA. No SMA otherwise.")
+        sma_input = gr.Number(label="SMA Period", info="Enter value between 2 and 20 to use SMA. No SMA otherwise.",
+                              value=1)
 
     submit_button = gr.Button("Submit", variant='primary')
     plot_result = gr.Plot(label='candlestick-chart', format='png')
@@ -83,9 +84,10 @@ with gr.Blocks() as demo:
         """
         ## How it works
         1. Choose 1 of available tickers.
-        2. Click Submit
-        3. Wait for the chart to appear (especially the first chart). 
-        4. Move cursor to the candle to see detailed info about OHLC and price direction.
+        2. Enter an integer between 2 and 20 to plot SMA (optional)
+        3. Click Submit
+        4. Wait for the chart to appear (especially the first chart). 
+        5. Move cursor to the candle to see detailed info about OHLC and price direction.
         
         Data is taken from yahoo finance. Note that the displayed data might be delayed.
         """
