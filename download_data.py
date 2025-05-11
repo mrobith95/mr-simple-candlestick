@@ -4,6 +4,7 @@ from append_or_create_csv import append_or_create_csv
 import os
 import pytz
 from datetime import datetime
+# from curl_cffi import requests
 
 def download_data(to_download):
 
@@ -11,7 +12,10 @@ def download_data(to_download):
     ##msft = allticks.tickers['MSFT']
     ##msftinfo = msft.info
 
+    # session = requests.Session(impersonate='chrome')
+
     ini_info = yf.Ticker(to_download).info
+    # print(ini_info)
     try:
         ini_nama = ini_info['longName']
     except:
